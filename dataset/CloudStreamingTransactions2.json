@@ -1,0 +1,20 @@
+{
+	"name": "CloudStreamingTransactions2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeSouthridgeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "transactions",
+				"fileSystem": "curated"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
