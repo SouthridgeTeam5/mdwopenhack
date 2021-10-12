@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "datafactoryhhesdpukwdhh6"
+		},
+		"ArmtemplateStorageLinkedService_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeSouthridgeStorage_accountKey": {
+			"value": ""
+		},
+		"AzureSqlCloudStreamingDatabase_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseSales_connectionString": {
+			"value": ""
+		},
+		"CosmosDbMovies_connectionString": {
+			"value": ""
+		},
+		"SqlServerVanarsdel_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeSouthridgeStorage_properties_typeProperties_url": {
+			"value": "https://southridgedvdteam5.dfs.core.windows.net"
+		}
+	}
+}
