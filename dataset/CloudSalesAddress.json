@@ -1,0 +1,20 @@
+{
+	"name": "CloudSalesAddress",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeSouthridgeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "address",
+				"fileSystem": "curated"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

@@ -12,7 +12,15 @@
 					"name": "CuratedAddress1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CloudSalesAddress",
+						"type": "DatasetReference"
+					},
+					"name": "CloudSalesAddressSink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "CloudSalesAddress2"
@@ -21,7 +29,7 @@
 					"name": "CloudSalesAddress3"
 				}
 			],
-			"script": "source(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CuratedAddress1\nCuratedAddress1 derive(source = \"1\") ~> CloudSalesAddress2\nCloudSalesAddress2 derive(UniqueID = source + CustomerID + AddressID) ~> CloudSalesAddress3"
+			"script": "source(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CuratedAddress1\nCuratedAddress1 derive(source = \"1\") ~> CloudSalesAddress2\nCloudSalesAddress2 derive(UniqueID = source + CustomerID + AddressID) ~> CloudSalesAddress3\nCloudSalesAddress3 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CloudSalesAddressSink1"
 		}
 	}
 }
