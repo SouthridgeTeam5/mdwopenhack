@@ -12,7 +12,7 @@
 				"type": "AzureBlobFSLocation",
 				"fileName": "dboCustomers.csv",
 				"folderPath": "cloudsales",
-				"fileSystem": "rawdata"
+				"fileSystem": "curated"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
