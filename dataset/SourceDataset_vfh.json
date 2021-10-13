@@ -1,0 +1,18 @@
+{
+	"name": "SourceDataset_vfh",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeSouthridgeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "cloudsales/2021/10/13/14",
+				"fileSystem": "rawdata"
+			}
+		}
+	}
+}
