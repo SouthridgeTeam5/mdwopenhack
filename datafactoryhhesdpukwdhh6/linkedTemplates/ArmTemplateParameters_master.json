@@ -26,6 +26,9 @@
 		"AzureDataLakeSouthridgeStorage_properties_typeProperties_url": {
 			"value": "https://southridgedvdteam5.dfs.core.windows.net"
 		},
+		"Trigger_bx8_properties_pipeline_parameters_windowStart": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
 		"containerUri": {
 			"value": ""
 		},
