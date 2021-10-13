@@ -83,8 +83,8 @@
 					"enableLogging": true,
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
-						"recursive": true,
-						"wildcardFileName": "Customer*.csv",
+						"recursive": false,
+						"wildcardFileName": "dboCustomers*.csv",
 						"enablePartitionDiscovery": false
 					}
 				}
