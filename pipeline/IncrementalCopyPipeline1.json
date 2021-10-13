@@ -63,8 +63,8 @@
 						"referenceName": "SourceDataset_bx8",
 						"type": "DatasetReference",
 						"parameters": {
-							"cw_fileName": "00",
-							"cw_folderPath": "2021/10/13"
+							"cw_fileName": "@{formatDateTime(pipeline().parameters.windowStart,'HH')}",
+							"cw_folderPath": "cloudsales/@{formatDateTime(pipeline().parameters.windowStart,'yyyy')}/@{formatDateTime(pipeline().parameters.windowStart,'MM')}/@{formatDateTime(pipeline().parameters.windowStart,'dd')}"
 						}
 					}
 				],
