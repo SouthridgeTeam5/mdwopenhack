@@ -51,7 +51,7 @@
 				}
 			},
 			{
-				"name": "deleterprocessed",
+				"name": "deletecloudsalescustomerraw",
 				"type": "Delete",
 				"dependsOn": [
 					{
@@ -94,7 +94,7 @@
 				"type": "Delete",
 				"dependsOn": [
 					{
-						"activity": "deleterprocessed",
+						"activity": "deletecloudsalescustomerraw",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -120,6 +120,29 @@
 						"wildcardFileName": "dboCustomers*.csv",
 						"enablePartitionDiscovery": false
 					}
+				}
+			},
+			{
+				"name": "Delete2",
+				"type": "Delete",
+				"dependsOn": [
+					{
+						"activity": "Delete1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableLogging": true
 				}
 			}
 		],
