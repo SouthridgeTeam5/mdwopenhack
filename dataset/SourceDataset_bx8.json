@@ -18,8 +18,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "00",
-				"folderPath": "cloudsales/2021/10/13",
+				"fileName": "@dataset().cw_fileName",
+				"folderPath": "@dataset().cw_folderPath",
 				"fileSystem": "rawdata"
 			}
 		}
