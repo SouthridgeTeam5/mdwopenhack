@@ -61,11 +61,7 @@
 				"inputs": [
 					{
 						"referenceName": "SourceDataset_bx8",
-						"type": "DatasetReference",
-						"parameters": {
-							"cw_fileName": "00",
-							"cw_folderPath": "rawdata/cloudsales/2021/10/13/"
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
