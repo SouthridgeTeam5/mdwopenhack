@@ -16,7 +16,7 @@
 				"userProperties": [
 					{
 						"name": "Source",
-						"value": "rawdata/cloudsales/@{formatDateTime(pipeline().parameters.windowStart,'yyyy')}/@{formatDateTime(pipeline().parameters.windowStart,'MM')}/@{formatDateTime(pipeline().parameters.windowStart,'dd')}/@{formatDateTime(pipeline().parameters.windowStart,'HH')}"
+						"value": "rawdata/cloudsales/2021/10/13/00"
 					},
 					{
 						"name": "Destination",
@@ -63,8 +63,8 @@
 						"referenceName": "SourceDataset_bx8",
 						"type": "DatasetReference",
 						"parameters": {
-							"cw_fileName": "@{formatDateTime(pipeline().parameters.windowStart,'HH')}",
-							"cw_folderPath": "cloudsales/@{formatDateTime(pipeline().parameters.windowStart,'yyyy')}/@{formatDateTime(pipeline().parameters.windowStart,'MM')}/@{formatDateTime(pipeline().parameters.windowStart,'dd')}"
+							"cw_fileName": "00",
+							"cw_folderPath": "rawdata/cloudsales/2021/10/13/"
 						}
 					}
 				],
