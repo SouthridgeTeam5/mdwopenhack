@@ -6,34 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "datafactoryhhesdpukwdhh6"
-		},
-		"ArmtemplateStorageLinkedService_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ArmtemplateStorageLinkedService'"
-		},
-		"AzureDataLakeSouthridgeStorage_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeSouthridgeStorage'"
-		},
-		"AzureSqlCloudStreamingDatabase_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSqlCloudStreamingDatabase'"
-		},
-		"AzureSqlDatabaseSales_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSales'"
-		},
-		"CosmosDbMovies_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'CosmosDbMovies'"
-		},
-		"SqlServerVanarsdel_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SqlServerVanarsdel'"
-		},
-		"AzureDataLakeSouthridgeStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://southridgedvdteam5.dfs.core.windows.net"
 		}
 	},
 	"variables": {
@@ -77,23 +49,17 @@
 						"inputs": [
 							{
 								"referenceName": "ArmtemplateTestDatasetIn",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "ArmtemplateTestDatasetOut",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"annotations": [],
 				"lastPublishTime": "2021-10-12T16:01:59Z"
 			},
@@ -182,10 +148,6 @@
 						}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"parameters": {
 					"cw_items": {
 						"type": "Array",
@@ -313,10 +275,6 @@
 						}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"parameters": {
 					"cw_items": {
 						"type": "Array",
@@ -404,23 +362,17 @@
 						"inputs": [
 							{
 								"referenceName": "SourceDataset_71p",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "DestinationDataset_71p",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"annotations": [],
 				"lastPublishTime": "2021-10-12T16:25:30Z"
 			},
@@ -509,10 +461,6 @@
 						}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"parameters": {
 					"cw_items": {
 						"type": "Array",
@@ -597,16 +545,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "CuratedAddress2",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"CuratedAddress1": {},
-									"CuratedAddress2": {},
-									"CloudSalesAddressSink1": {},
-									"CloudStreamingAddressSink2": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -629,20 +569,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "CuratedCustomerDataflow",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"CloudSales": {},
-									"CloudStreaming": {},
-									"FourthCoffeeRentals": {},
-									"OnPremRentals": {},
-									"CustomerCloudSalesSink": {},
-									"CustomerCloudStreamingParquetSink": {},
-									"CustomerFourthCoffeeRentalsSink": {},
-									"CustomerOnPremRentalsSink": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -651,10 +579,6 @@
 						}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -683,14 +607,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "CuratedStreamingTransactions",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"CuratedStreaming1": {},
-									"CloudStreaminSink": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -699,10 +617,6 @@
 						}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -729,9 +643,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/ArmtemplateTestDatasetOut')]",
@@ -752,9 +664,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/CloudSalesAddress')]",
@@ -1563,9 +1473,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/SqlServerVanarsdel')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SourceDataset_71p')]",
@@ -1622,9 +1530,7 @@
 					"collectionName": "movies"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/CosmosDbMovies')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SourceDataset_97k')]",
@@ -1651,9 +1557,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabaseSales')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SourceDataset_gzr')]",
@@ -1680,21 +1584,6 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlCloudStreamingDatabase')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ArmtemplateStorageLinkedService')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('ArmtemplateStorageLinkedService_connectionString')]"
-				}
-			},
 			"dependsOn": []
 		},
 		{
@@ -1705,80 +1594,12 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('AzureDataLakeSouthridgeStorage_properties_typeProperties_url')]",
+					"url": "https://southridgedvdteam5.dfs.core.windows.net",
 					"accountKey": {
 						"type": "SecureString",
-						"value": "[parameters('AzureDataLakeSouthridgeStorage_accountKey')]"
+						"value": "**********"
 					}
 				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlCloudStreamingDatabase')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureSqlCloudStreamingDatabase_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabaseSales')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureSqlDatabaseSales_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CosmosDbMovies')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "CosmosDb",
-				"typeProperties": {
-					"connectionString": "[parameters('CosmosDbMovies_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SqlServerVanarsdel')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('SqlServerVanarsdel_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "integrationRuntimeteam5",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeteam5')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/integrationRuntimeteam5')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
 			},
 			"dependsOn": []
 		},

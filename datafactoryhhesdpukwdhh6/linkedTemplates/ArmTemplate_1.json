@@ -17,6 +17,203 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/CustomerFourthCoffeeRentalsParquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeSouthridgeStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "customer",
+						"fileSystem": "curated"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CustomerOnPremRentalsParquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeSouthridgeStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "customer",
+						"fileSystem": "curated"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeSouthridgeStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_0e6')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeSouthridgeStorage",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_fileName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().cw_fileName",
+							"type": "Expression"
+						},
+						"folderPath": "onpremrentals",
+						"fileSystem": "rawdata"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_71p')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeSouthridgeStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "movies",
+						"fileSystem": "rawdata"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_97k')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeSouthridgeStorage",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_fileName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().cw_fileName",
+							"type": "Expression"
+						},
+						"folderPath": "cloudsales",
+						"fileSystem": "rawdata"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_gzr')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeSouthridgeStorage",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_fileName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().cw_fileName",
+							"type": "Expression"
+						},
+						"folderPath": "cloudstreaming",
+						"fileSystem": "rawdata"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SourceDataset_71p')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -141,283 +338,6 @@
 					"referenceName": "integrationRuntimeteam5",
 					"type": "IntegrationRuntimeReference"
 				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CloudSalesAddressData')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDataLakeSouthridgeStorage",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "dboAddresses.csv",
-						"folderPath": "cloudsales",
-						"fileSystem": "rawdata"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "AddressID",
-						"type": "String"
-					},
-					{
-						"name": "CustomerID",
-						"type": "String"
-					},
-					{
-						"name": "AddressLine1",
-						"type": "String"
-					},
-					{
-						"name": "AddressLine2",
-						"type": "String"
-					},
-					{
-						"name": "City",
-						"type": "String"
-					},
-					{
-						"name": "State",
-						"type": "String"
-					},
-					{
-						"name": "ZipCode",
-						"type": "String"
-					},
-					{
-						"name": "CreatedDate",
-						"type": "String"
-					},
-					{
-						"name": "UpdatedDate",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CloudSalesAddress')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDataLakeSouthridgeStorage",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": "address",
-						"fileSystem": "curated"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CloudStreamingAddressData')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDataLakeSouthridgeStorage",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "dboAddresses.csv",
-						"folderPath": "cloudstreaming",
-						"fileSystem": "rawdata"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "AddressID",
-						"type": "String"
-					},
-					{
-						"name": "CustomerID",
-						"type": "String"
-					},
-					{
-						"name": "AddressLine1",
-						"type": "String"
-					},
-					{
-						"name": "AddressLine2",
-						"type": "String"
-					},
-					{
-						"name": "City",
-						"type": "String"
-					},
-					{
-						"name": "State",
-						"type": "String"
-					},
-					{
-						"name": "ZipCode",
-						"type": "String"
-					},
-					{
-						"name": "CreatedDate",
-						"type": "String"
-					},
-					{
-						"name": "UpdatedDate",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CloudStreamingAddressData2')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDataLakeSouthridgeStorage",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": "address",
-						"fileSystem": "curated"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDataLakeSouthridgeStorage",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CloudStreamingTransactions')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDataLakeSouthridgeStorage",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "dboTransactions.csv",
-						"folderPath": "cloudstreaming",
-						"fileSystem": "rawdata"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "TransactionID",
-						"type": "String"
-					},
-					{
-						"name": "CustomerID",
-						"type": "String"
-					},
-					{
-						"name": "MovieID",
-						"type": "String"
-					},
-					{
-						"name": "StreamStart",
-						"type": "String"
-					},
-					{
-						"name": "StreamEnd",
-						"type": "String"
-					},
-					{
-						"name": "CreatedDate",
-						"type": "String"
-					},
-					{
-						"name": "UpdatedDate",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CloudStreamingTransactions2')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDataLakeSouthridgeStorage",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": "transactions",
-						"fileSystem": "curated"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
 			},
 			"dependsOn": []
 		},
@@ -607,7 +527,8 @@
 				"lastPublishTime": "2021-10-12T16:18:08Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_97k')]"
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_97k')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_97k')]"
 			]
 		},
 		{
@@ -729,7 +650,8 @@
 				"lastPublishTime": "2021-10-12T16:21:29Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_gzr')]"
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_gzr')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_gzr')]"
 			]
 		},
 		{
@@ -801,7 +723,8 @@
 				"lastPublishTime": "2021-10-12T16:25:30Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_71p')]"
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_71p')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_71p')]"
 			]
 		},
 		{
@@ -832,6 +755,70 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/SqlServerVanarsdel')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CuratedAddress2')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "CloudSalesAddressData",
+								"type": "DatasetReference"
+							},
+							"name": "CuratedAddress1"
+						},
+						{
+							"dataset": {
+								"referenceName": "CloudStreamingAddressData",
+								"type": "DatasetReference"
+							},
+							"name": "CuratedAddress2"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "CloudSalesAddress",
+								"type": "DatasetReference"
+							},
+							"name": "CloudSalesAddressSink1"
+						},
+						{
+							"dataset": {
+								"referenceName": "CloudStreamingAddressData2",
+								"type": "DatasetReference"
+							},
+							"name": "CloudStreamingAddressSink2"
+						}
+					],
+					"transformations": [
+						{
+							"name": "CloudSalesAddress2"
+						},
+						{
+							"name": "CloudSalesAddress3"
+						},
+						{
+							"name": "CloudStreamingAddress2"
+						},
+						{
+							"name": "CloudStreamingAddress3"
+						},
+						{
+							"name": "Select1"
+						},
+						{
+							"name": "Select2"
+						}
+					],
+					"script": "source(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CuratedAddress1\nsource(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CuratedAddress2\nCuratedAddress1 derive(source = \"1\") ~> CloudSalesAddress2\nCloudSalesAddress2 derive(UniqueID = source + CustomerID + AddressID) ~> CloudSalesAddress3\nCuratedAddress2 derive(source = \"1\") ~> CloudStreamingAddress2\nCloudStreamingAddress2 derive(UniqueID = source + CustomerID + AddressID) ~> CloudStreamingAddress3\nCloudSalesAddress3 select(mapColumn(\n\t\tAddressID,\n\t\tCustomerID,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tsource,\n\t\tUniqueID\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nCloudStreamingAddress3 select(mapColumn(\n\t\tAddressID,\n\t\tCustomerID,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tsource,\n\t\tUniqueID\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select2\nSelect1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CloudSalesAddressSink1\nSelect2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CloudStreamingAddressSink2"
+				}
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/CuratedCustomerDataflow')]",
@@ -924,74 +911,26 @@
 						},
 						{
 							"name": "UniqueCustomerID2"
+						},
+						{
+							"name": "Select1"
+						},
+						{
+							"name": "Select2"
+						},
+						{
+							"name": "Select3"
+						},
+						{
+							"name": "Select4"
 						}
 					],
-					"script": "source(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CloudSales\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CloudStreaming\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> FourthCoffeeRentals\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OnPremRentals\nCloudSales derive(Source = \"1\") ~> DerivedColumnForCloudSales\nCloudStreaming derive(source = \"1\") ~> DerivedColumnForClousStreaming\nFourthCoffeeRentals derive(source = \"3\") ~> DerivedColumnForFourthCoffeeRentals\nOnPremRentals derive(source = \"2\") ~> DerivedColumnForOnPremRentals\nDerivedColumnForCloudSales derive(UniqueCustomerID = Source+CustomerID,\n\t\tCreatedDate_Tr = toDate(CreatedDate),\n\t\tUpdatedDate_Tr = toDate(UpdatedDate)) ~> UniqueCustomerID\nDerivedColumnForFourthCoffeeRentals derive(UniqueCustomerID = source+CustomerID,\n\t\tCreatedDate_Tr = toDate(CreatedDate),\n\t\tUpdatedDate_Tr = toDate(UpdatedDate)) ~> UniqueCustomerID3\nDerivedColumnForOnPremRentals derive(UniqueCustomerID = source+CustomerID,\n\t\tCreatedDate_Tr = toDate(CreatedDate),\n\t\tUpdatedDate_Tr = toDate(UpdatedDate)) ~> UniqueCustomerID4\nDerivedColumnForClousStreaming derive(UniqueCustomerID = source+CustomerID,\n\t\tCreatedDate_Tr = toDate(CreatedDate),\n\t\tUpdatedDate_Tr = toDate(UpdatedDate)) ~> UniqueCustomerID2\nUniqueCustomerID sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CustomerCloudSalesSink\nUniqueCustomerID2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CustomerCloudStreamingParquetSink\nUniqueCustomerID3 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CustomerFourthCoffeeRentalsSink\nUniqueCustomerID4 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CustomerOnPremRentalsSink"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CuratedAddress2')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "CloudSalesAddressData",
-								"type": "DatasetReference"
-							},
-							"name": "CuratedAddress1"
-						},
-						{
-							"dataset": {
-								"referenceName": "CloudStreamingAddressData",
-								"type": "DatasetReference"
-							},
-							"name": "CuratedAddress2"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "CloudSalesAddress",
-								"type": "DatasetReference"
-							},
-							"name": "CloudSalesAddressSink1"
-						},
-						{
-							"dataset": {
-								"referenceName": "CloudStreamingAddressData2",
-								"type": "DatasetReference"
-							},
-							"name": "CloudStreamingAddressSink2"
-						}
-					],
-					"transformations": [
-						{
-							"name": "CloudSalesAddress2"
-						},
-						{
-							"name": "CloudSalesAddress3"
-						},
-						{
-							"name": "CloudStreamingAddress2"
-						},
-						{
-							"name": "CloudStreamingAddress3"
-						}
-					],
-					"script": "source(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CuratedAddress1\nsource(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CuratedAddress2\nCuratedAddress1 derive(source = \"1\") ~> CloudSalesAddress2\nCloudSalesAddress2 derive(UniqueID = source + CustomerID + AddressID) ~> CloudSalesAddress3\nCuratedAddress2 derive(source = \"1\") ~> CloudStreamingAddress2\nCloudStreamingAddress2 derive(UniqueID = source + CustomerID + AddressID) ~> CloudStreamingAddress3\nCloudSalesAddress3 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CloudSalesAddressSink1\nCloudStreamingAddress3 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CloudStreamingAddressSink2"
+					"script": "source(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CloudSales\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CloudStreaming\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> FourthCoffeeRentals\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OnPremRentals\nCloudSales derive(Source = \"1\") ~> DerivedColumnForCloudSales\nCloudStreaming derive(source = \"1\") ~> DerivedColumnForClousStreaming\nFourthCoffeeRentals derive(source = \"3\") ~> DerivedColumnForFourthCoffeeRentals\nOnPremRentals derive(source = \"2\") ~> DerivedColumnForOnPremRentals\nDerivedColumnForCloudSales derive(UniqueCustomerID = Source+CustomerID,\n\t\tCreatedDate_Tr = toDate(CreatedDate),\n\t\tUpdatedDate_Tr = toDate(UpdatedDate)) ~> UniqueCustomerID\nDerivedColumnForFourthCoffeeRentals derive(UniqueCustomerID = source+CustomerID,\n\t\tCreatedDate_Tr = toDate(CreatedDate),\n\t\tUpdatedDate_Tr = toDate(UpdatedDate)) ~> UniqueCustomerID3\nDerivedColumnForOnPremRentals derive(UniqueCustomerID = source+CustomerID,\n\t\tCreatedDate_Tr = toDate(CreatedDate),\n\t\tUpdatedDate_Tr = toDate(UpdatedDate)) ~> UniqueCustomerID4\nDerivedColumnForClousStreaming derive(UniqueCustomerID = source+CustomerID,\n\t\tCreatedDate_Tr = toDate(CreatedDate),\n\t\tUpdatedDate_Tr = toDate(UpdatedDate)) ~> UniqueCustomerID2\nUniqueCustomerID3 select(mapColumn(\n\t\tCustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tsource,\n\t\tUniqueCustomerID,\n\t\tCreatedDate_Tr,\n\t\tUpdatedDate_Tr\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nUniqueCustomerID4 select(mapColumn(\n\t\tCustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tsource,\n\t\tUniqueCustomerID,\n\t\tCreatedDate_Tr,\n\t\tUpdatedDate_Tr\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select2\nUniqueCustomerID select(mapColumn(\n\t\tCustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tSource,\n\t\tUniqueCustomerID,\n\t\tCreatedDate_Tr,\n\t\tUpdatedDate_Tr\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select3\nUniqueCustomerID2 select(mapColumn(\n\t\tCustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tsource,\n\t\tUniqueCustomerID,\n\t\tCreatedDate_Tr,\n\t\tUpdatedDate_Tr\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select4\nSelect3 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CustomerCloudSalesSink\nSelect4 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CustomerCloudStreamingParquetSink\nSelect1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CustomerFourthCoffeeRentalsSink\nSelect2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CustomerOnPremRentalsSink"
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/CloudSalesAddressData')]",
-				"[concat(variables('factoryId'), '/datasets/CloudStreamingAddressData')]",
-				"[concat(variables('factoryId'), '/datasets/CloudSalesAddress')]",
-				"[concat(variables('factoryId'), '/datasets/CloudStreamingAddressData2')]"
+				"[concat(variables('factoryId'), '/datasets/CustomerFourthCoffeeRentalsParquet')]",
+				"[concat(variables('factoryId'), '/datasets/CustomerOnPremRentalsParquet')]"
 			]
 		},
 		{
@@ -1030,10 +969,7 @@
 					"script": "source(output(\n\t\tTransactionID as string,\n\t\tCustomerID as string,\n\t\tMovieID as string,\n\t\tStreamStart as string,\n\t\tStreamEnd as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CuratedStreaming1\nCuratedStreaming1 derive(source = \"1\") ~> CuratedStreaming2\nCuratedStreaming2 derive(UniqueOrderID = source + TransactionID,\n\t\tUniqueMovieID = source + MovieID,\n\t\tUniqueCustomerID = source + CustomerID,\n\t\tStreamStart_Tr = toDate(StreamStart),\n\t\tStreamEnd_Tr = toDate(StreamEnd)) ~> CuratedStreaming3\nCuratedStreaming3 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CloudStreaminSink"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/CloudStreamingTransactions')]",
-				"[concat(variables('factoryId'), '/datasets/CloudStreamingTransactions2')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/CopyPipelineOnPremRentals')]",
@@ -1178,7 +1114,8 @@
 				"lastPublishTime": "2021-10-12T17:40:03Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_0e6')]"
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_0e6')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_0e6')]"
 			]
 		}
 	]
