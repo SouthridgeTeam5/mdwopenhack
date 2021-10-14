@@ -1,5 +1,5 @@
 {
-	"name": "DeltaCopyAndFullCopyfromDB_using_ControlTable",
+	"name": "CloudStreamingDeltaCopyAndFullCopyfromDB_using_ControlTable",
 	"properties": {
 		"description": "Copy new or updated rows only from database using external control table",
 		"activities": [
