@@ -23,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSales'"
 		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSynapseAnalytics1'"
+		},
 		"CosmosDbMovies_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CosmosDbMovies'"
@@ -30,6 +34,10 @@
 		"SqlServerVanarsdel_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SqlServerVanarsdel'"
+		},
+		"linkedService1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'linkedService1'"
 		},
 		"AzureDataLakeSouthridgeStorage_properties_typeProperties_url": {
 			"type": "string",
@@ -78,8 +86,14 @@
 					"AzureSqlDatabaseSales_connectionString": {
 						"value": "[parameters('AzureSqlDatabaseSales_connectionString')]"
 					},
+					"AzureSynapseAnalytics1_connectionString": {
+						"value": "[parameters('AzureSynapseAnalytics1_connectionString')]"
+					},
 					"CosmosDbMovies_connectionString": {
 						"value": "[parameters('CosmosDbMovies_connectionString')]"
+					},
+					"linkedService1_connectionString": {
+						"value": "[parameters('linkedService1_connectionString')]"
 					},
 					"AzureDataLakeSouthridgeStorage_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeSouthridgeStorage_properties_typeProperties_url')]"
@@ -101,9 +115,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"SqlServerVanarsdel_connectionString": {
-						"value": "[parameters('SqlServerVanarsdel_connectionString')]"
 					}
 				}
 			},
@@ -124,6 +135,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"SqlServerVanarsdel_connectionString": {
+						"value": "[parameters('SqlServerVanarsdel_connectionString')]"
 					},
 					"Trigger_bx8_properties_pipeline_parameters_windowStart": {
 						"value": "[parameters('Trigger_bx8_properties_pipeline_parameters_windowStart')]"
