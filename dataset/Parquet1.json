@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "part-00000-tid-5990596254040489654-76f2baf2-f734-44ce-8dab-fbafde528232-3-1-c000.snappy.parquet",
 				"folderPath": "customer",
 				"fileSystem": "curated"
 			},
