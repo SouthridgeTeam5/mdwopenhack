@@ -26,6 +26,10 @@
 						"type": "DataFlowReference"
 					},
 					"staging": {
+						"linkedService": {
+							"referenceName": "linkedService1",
+							"type": "LinkedServiceReference"
+						},
 						"folderPath": "staging"
 					},
 					"compute": {
