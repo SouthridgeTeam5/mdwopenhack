@@ -1,0 +1,62 @@
+{
+	"name": "Parquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeSouthridgeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "part-00000-tid-5990596254040489654-76f2baf2-f734-44ce-8dab-fbafde528232-3-1-c000.snappy.parquet",
+				"folderPath": "customer",
+				"fileSystem": "curated"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "CustomerID",
+				"type": "UTF8"
+			},
+			{
+				"name": "LastName",
+				"type": "UTF8"
+			},
+			{
+				"name": "FirstName",
+				"type": "UTF8"
+			},
+			{
+				"name": "PhoneNumber",
+				"type": "UTF8"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "UTF8"
+			},
+			{
+				"name": "UpdatedDate",
+				"type": "UTF8"
+			},
+			{
+				"name": "source",
+				"type": "UTF8"
+			},
+			{
+				"name": "UniqueCustomerID",
+				"type": "UTF8"
+			},
+			{
+				"name": "CreatedDate_Tr",
+				"type": "DATE"
+			},
+			{
+				"name": "UpdatedDate_Tr",
+				"type": "DATE"
+			}
+		]
+	}
+}
